@@ -67,7 +67,8 @@ def getNerfppNorm(cam_info):
 
 def readColmapCameras(cam_extrinsics, cam_intrinsics, images_folder):
     cam_infos = []
-    if cam_intrinsics[cam_extrinsics[1].camera_id].model=="SIMPLE_RADIAL":
+    key_alt = next(iter(cam_extrinsics))
+    if cam_intrinsics[cam_extrinsics[key_alt].camera_id].model=="SIMPLE_RADIAL":
         focal_path = "/".join(images_folder.split("/")[:-1]) + "/poses_bounds.npy"
         focal_length_x = np.load(focal_path)[0,-3]
 
